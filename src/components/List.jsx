@@ -37,7 +37,7 @@ const List = () => {
     const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
 
     // Aggiungere un nuovo film
-    const handleAddFilm = (e) => {
+    const addFilm = (e) => {
         e.preventDefault()
         if (newTitle && newGenere) {
             const nuovoFilm = { title: capitalize(newTitle), genere: capitalize(newGenere) }
@@ -69,7 +69,7 @@ const List = () => {
 
             {/* Form per aggiungere film */}
             <div className="container my-3">
-                <form className="row g-3" onSubmit={handleAddFilm}>
+                <form className="row g-3" onSubmit={addFilm}>
                     <div className="col-auto">
                         <input
                             type="text"
