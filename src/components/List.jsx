@@ -14,9 +14,19 @@ const List = () => {
     const [filteredFilm, setFilteredFilm] = useState(films)
     const [search, setSearch] = useState("")
 
+    // estraggo i generi per rendere il filtro dinamico
+    const tuttiGeneri = films.map(film => film.genere)
+
+    // finltro i duplicati
+    const generi = tuttiGeneri.filter((genere, index, array) => {
+        return array.indexOf(genere) === index
+    })
+
+
+
     useEffect(() => {
         setFilteredFilm(
-            film.filter(f => f.genere.toLowerCase().includes(search.toLowerCase()))
+            film.filter(f => f.genere.includes(search))
         )
     }, [search, film])
 
@@ -31,10 +41,9 @@ const List = () => {
                             onChange={(e) => setSearch(e.target.value)}
                         >
                             <option value="">Filtra in base al genere</option>
-                            <option value="Fantascienza">Fantascienza</option>
-                            <option value="Thriller">Thriller</option>
-                            <option value="Romantico">Romantico</option>
-                            <option value="Azione">Azione</option>
+                            {generi.map((genere, index) => (
+                                <option key={index} value={genere}>{genere}</option>
+                            ))}
                         </select>
                     </div>
                 </div>
