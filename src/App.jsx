@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import MyHeader from './components/MyHeader'
 import MyMain from './components/MyMain'
 import 'bootstrap/dist/css/bootstrap.min.css';
